@@ -2,7 +2,7 @@ import Article from '../../Model/blog/blog.js';
 
 export const GetA_Blog = async (req, res) =>{
     const GetArticle = await Article.find().sort({createdAt:'desc'}); //降序：新文章一直在頂部 
-    res.render('admin/blog/A_blog.ejs', { articles: GetArticle });  //html：mongodb -->ejs ForEach
+    res.render('admin/blog/A_blog.ejs', { articles : GetArticle });  //html：mongodb -->ejs ForEach
 }
 
 export const GetNew = (req,res) =>{

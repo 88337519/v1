@@ -77,6 +77,7 @@ import BlogRoutes from './Routes/blog.js';
 import AboutRoutes from './Routes/about.js';
 import AuthRoutes from './Routes/auth.js';
 import AdminRoutes from './admin/Routes/admin.js';
+import AdminBlog from './admin/Routes/blog.js'
 
 //主頁
 app.use('/index', IndexRoutes);
@@ -94,6 +95,7 @@ app.use('/about', AboutRoutes);
 app.use('/auth', AuthRoutes);
 //管理員
 app.use('/admin',AdminRoutes);
+app.use('/admin/A_blog',AdminBlog);
 
 
 
