@@ -10,8 +10,6 @@
 <body>
 <div class="container">
     <h1 class="mb-4">博客文章</h1>
-    <a href="/blog/new" class="btn btn-success">創建文章</a>
-    
     <% article.forEach(articles => { %>
         <div class="card mt-4">
             <div calss="card-body">
@@ -21,9 +19,6 @@
                     修改時間：<%= articles.createdAt.toLocaleDateString() %>
                 </div>
                 <a href="blog/<%= articles.id %>" class="btn btn-primary">閱讀全文</a>
-                <form action="/blog/<%= articles._id %>?_method=DELETE" method="POST" class="d-lg-inline">
-                    <button type="submit" class="btn btn-danger">刪除文章</button>
-                </form>
             </div>
         </div>
     <% }) %>

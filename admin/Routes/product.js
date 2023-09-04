@@ -1,15 +1,14 @@
 import express from 'express';
 const Routes = express.Router();
 
-import {GetAdmin,GetCategory,GetPets,GetProduct,
+import {GetCategory,GetPets,GetProduct,
         PostCategory,PostPets,PostProduct,
         EditCategory,EditPets,EditProduct,
-        DeleteCategory,DeletePets,DeleteProduct} from '../Controller/admin.js'
+        DeleteCategory,DeletePets,DeleteProduct} from '../Controller/admin/admin.js'
 
 
 //Get
-//管理員頁面
-Routes.route('/').get(GetAdmin);
+
 //創建種類頁面
 Routes.route('/category').get(GetCategory);
 //創建寵物品種頁面

@@ -38,24 +38,25 @@ app.use(session({
 // app.use(passport.initialize());
 // app.use(passport.session());
 
-//建立Verify Callback 建立認證機制
-passport.serializeUser(function(user, done){
-    done(null, user);
-})
-passport.deserializeUser(function(user, done){
-    done(null, user);
-})    
-//Middleware
-passport.use(new LocalStrategy({
-    passReqToCallback: true,        //讓Verify Callback可以取得req物件
-},function(username, password, done){    
-    User.findOne({username:username},function(err, user){  //通過mongodb查找使用者信息
-        if(err){return done(err)}   //如果服務器端顯示錯誤，提供passp錯誤訊息
-        if(!user){return done(null, false)}  //如果沒有在數據庫找到該使用者，不提供passport任何使用者訊息
-        if(user.password != password){return done(null, false)}  //如果在數據庫找找到使用者，但密碼錯誤，不提供passport任何使用者訊息
-        return done(null, user)  //如果帳號密碼都正確提供passport使用者訊息
-    })
-}))
+// //建立Verify Callback 建立認證機制
+// passport.serializeUser(function(user, done){
+//     done(null, user);
+// })
+// passport.deserializeUser(function(user, done){
+//     done(null, user);
+// })    
+
+// //Middleware
+// passport.use(new LocalStrategy({
+//     passReqToCallback: true,        //讓Verify Callback可以取得req物件
+// },function(username, password, done){    
+//     User.findOne({username:username},function(err, user){  //通過mongodb查找使用者信息
+//         if(err){return done(err)}   //如果服務器端顯示錯誤，提供passp錯誤訊息
+//         if(!user){return done(null, false)}  //如果沒有在數據庫找到該使用者，不提供passport任何使用者訊息
+//         if(user.password != password){return done(null, false)}  //如果在數據庫找找到使用者，但密碼錯誤，不提供passport任何使用者訊息
+//         return done(null, user)  //如果帳號密碼都正確提供passport使用者訊息
+//     })
+// }))
 
 
 //Template engine
@@ -75,8 +76,7 @@ import CourseRoutes from './Routes/course.js';
 import BlogRoutes from './Routes/blog.js';
 import AboutRoutes from './Routes/about.js';
 import AuthRoutes from './Routes/auth.js';
-import AdminRoutes from './Routes/admin.js'
-
+import AdminRoutes from './admin/Routes/admin.js';
 
 //主頁
 app.use('/index', IndexRoutes);
@@ -94,6 +94,7 @@ app.use('/about', AboutRoutes);
 app.use('/auth', AuthRoutes);
 //管理員
 app.use('/admin',AdminRoutes);
+
 
 
 //port

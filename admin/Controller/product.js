@@ -1,11 +1,8 @@
-import Product from "../Model/product/product.js";
-import Category from "../Model/product/category.js";
-import Pets from "../Model/product/pets_category.js";
+import Product from "../../Model/product/product.js";
+import Category from "../../Model/product/category.js";
+import Pets from "../../Model/product/pets_category.js";
 
 //Get
-export const GetAdmin = (req,res) =>{
-    res.render('admin/admin.ejs');
-};
 
 export const GetCategory = (req,res) =>{
     res.render('admin/A_category.ejs');
