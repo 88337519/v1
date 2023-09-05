@@ -4,17 +4,33 @@ import Pets from "../../Model/product/admin/pets_category.js";
 
 //Get
 
-export const GetCategory = (req,res) =>{
-    res.render('admin/A_category.ejs');
+export const GetA_Store = (req,res) =>{
+    res.render('admin/store/A_store.ejs');
+}
+
+export const GetCategory = async (req,res) =>{
+    const Get_Category = await Category.find().sort({createdAt:'-1'});
+        res.render('admin/store/category/A_category.ejs', {category : Get_Category});
 };
 
-export const GetPets = (req,res) =>{
-    res.render('admin/A_pets.ejs');
+export const GetPets = async (req,res) =>{
+    const Get_Pets = await Pets.find().sort({createdAt:'-1'});
+    res.render('admin/store/pets/A_pets.ejs', {pet : Get_Pets});
 };
 
-export const GetProduct = (req,res) =>{
-    res.render('admin/A_product.ejs');
+export const GetProduct = async (req,res) =>{
+    const Get_Product = await Product.find().sort({createdAt:'-1'});
+    res.render('admin/store/product/A_product.ejs', {product : Get_Product});
 };
+
+export const GetNewCategory = (req,res) =>{
+    res.render('admin/store/category/new_category.ejs', {category : new Category()});
+};
+
+export const GetEditCategory = async(req,res) =>{
+    const EditCategory = await Category.findById(req.params.id)
+    res.render('admin/store/category/edit_category.ejs', {category : EditCategory});
+}
 
 //Post
 export const PostCategory = async (req,res) =>{
@@ -24,9 +40,9 @@ export const PostCategory = async (req,res) =>{
     });
     try{
         newCategory = await newCategory.save()
-        res.redirect('/admin/category');
+        res.redirect('/admin/A_product/category');
     }catch(error){
-        res.render('admin/A_category.ejs');
+        res.render('admin/store/A_category.ejs');
     }
     console.log(newCategory);
 };
@@ -41,9 +57,9 @@ export const PostPets = async (req,res) =>{
     });
     try{
         newPets = await newPets.save();
-        res.redirect('/admin/pets');
+        res.redirect('/admin/A_product/pets');
     }catch(error){
-        res.render('admin/A_pets.ejs');
+        res.render('admin/store/A_pets.ejs');
     }
     console.log(newPets);
 };
@@ -60,10 +76,10 @@ export const PostProduct = async (req,res) =>{
     });
     try{
         newProduct = await newProduct.save()
-        res.redirect('/admin/product');
+        res.redirect('/admin/A_product/product');
     }catch(error){
         console.log(error)
-        res.render('admin/A_product.ejs');
+        res.render('admin/store/A_product.ejs');
     }
     console.log(newProduct);
 };
@@ -78,7 +94,7 @@ export const EditCategory = async (req,res) =>{
 
         try{
             data.save().then(()=>{
-                res.redirect('/admin/category');
+                res.redirect('/admin/A_product/category');
             })
         }catch(error){
             res.redirect('/admin');
@@ -98,7 +114,7 @@ export const EditPets = async (req,res) =>{
 
         try{
             data.save().then(()=>{
-                res.redirect('/admin/pets');
+                res.redirect('/admin/A_product/pets');
             })
         }catch(error){
             res.redirect('/admin');
@@ -121,7 +137,7 @@ export const EditProduct = async (req,res) =>{
 
         try{
             data.save().then(()=>{
-                res.redirect('/admin/product');
+                res.redirect('/admin/A_product/product');
             })
         }catch(error){
             res.redirect('/admin');
@@ -134,15 +150,15 @@ export const EditProduct = async (req,res) =>{
 //Delete
 export const DeleteCategory = async (req,res) =>{
     await Category.findByIdAndDelete(req.params.id);
-    res.redirect('/admin/category');
+    res.redirect('/admin/A_product/category');
 }
 
 export const DeletePets = async (req,res) =>{
     await Pets.findByIdAndDelete(req.params.id);
-    res.redirect('/admin/pets');
+    res.redirect('/admin/A_product/pets');
 }
 
 export const DeleteProduct = async (req,res) =>{
     await Product.findByIdAndDelete(req.params.id);
-    res.redirect('/admin/product');
+    res.redirect('/admin/A_product/product');
 }

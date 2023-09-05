@@ -41,7 +41,6 @@ export const EditArticle = async(req,res) =>{
     const update = await Article.findByIdAndUpdate(req.params.id)
      .then((data) =>{
     const {title, description, markdown} = req.body;
-    console.log(req.body);
     
     data.title = title;
     data.description = description;
@@ -56,7 +55,7 @@ export const EditArticle = async(req,res) =>{
         console.log(error)
     }
  })
-    console.log(updata)
+    console.log(data)
 }
 
 export const DeleteArticle = async(req,res) =>{

@@ -3,9 +3,9 @@ import methodeOverride from 'method-override';
 import mongoose from 'mongoose';
 import flash from 'connect-flash';
 import bodyParser from 'body-parser';
-import passport from 'passport';
+// import passport from 'passport';
 // import { Strategy as LocalStrategy } from 'passport-local';
-import session from 'express-session';
+// import session from 'express-session';
 
 const app = express();
 
@@ -18,12 +18,12 @@ mongoose.connect('mongodb://localhost:27017/GuanDB',{
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
 
-//Session Middleware
-app.use(session({
-    secret:'keyboard Guan',
-    resave:true,
-    saveUninitialized:true,
-}));
+// //Session Middleware
+// app.use(session({
+//     secret:'keyboard Guan',
+//     resave:true,
+//     saveUninitialized:true,
+// }));
 
 // //Massages Middleware
 // app.use(flash());
@@ -62,7 +62,8 @@ app.use(session({
 
 //Template engine
 app.set("view engine","ejs");
-app.set("views", "./views")
+app.set("views", "./views");
+
 //Middleware
 app.use(express.json());
 app.use(methodeOverride("_method"));
@@ -79,7 +80,8 @@ import BlogRoutes from './Routes/blog.js';
 import AboutRoutes from './Routes/about.js';
 import AuthRoutes from './Routes/auth.js';
 import AdminRoutes from './admin/Routes/admin.js';
-import AdminBlog from './admin/Routes/blog.js'
+import AdminBlog from './admin/Routes/blog.js';
+import AdminProduct from './admin/Routes/product.js'
 
 //主頁
 app.use('/index', IndexRoutes);
@@ -98,7 +100,7 @@ app.use('/auth', AuthRoutes);
 //管理員
 app.use('/admin',AdminRoutes);
 app.use('/admin/A_blog',AdminBlog);
-
+app.use('/admin/A_product',AdminProduct);
 
 
 //port

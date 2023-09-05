@@ -1,21 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>首頁</title>
+    <%- include("../partials/head.ejs") %>
 </head>
 <body>
-    <h1>這是寵物用品主頁</h1>
-    <nav>
-        <a href="/product">產品</a>
-        <a href="/service">服務種類</a>
-        <a href="/course">課程</a>
-        <a href="/blog">Blog活動</a>
-        <a href="/about">關於我們</a>
-        <a href="/auth">登入/註冊</a>
-        <a>附加功能</a>
-        <a>footer</a>
-    </nav>
+    <header><%- include("../partials/_nav.ejs") %></header>
+    <main>
+        <div class="jumbotron">
+            <h1>This is Home pages</h1>
+            <div class="jumbotron text-center">
+                <h1 class="display-3"></h1>
+                <p class="lead">Wellcome to our pet shop</p>
+                <p>Let to start your shopping</p>
+                <form action="/product">
+                    <button type="submit" class="btn btn-dark btn-lg">start</button>
+                </form>
+            </div>
+        </div>
+    </main>
+    <footer><%- include("../partials/footer.ejs") %></footer>
 </body>
 </html>

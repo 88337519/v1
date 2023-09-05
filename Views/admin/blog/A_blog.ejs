@@ -14,8 +14,8 @@
     
     <% articles.forEach(Articles => { %>
         <div class="card mt-4">
-            <div calss="card-body">
-                <h4 calss="card-title"><%= Articles.title %></h4>
+            <div class="card-body">
+                <h4 class="card-title"><%= Articles.title %></h4>
                 <div class="card-text mb-2">文章描述：<%= Articles.description %></div>
                 <div class="card-subtitle text-muted mb-2">
                     修改時間：<%= Articles.createdAt.toLocaleDateString() %>
@@ -28,6 +28,6 @@
         </div>
     <% }) %>
 </div>
-    <a href="/admin/A_blog">返回上一層</a>
+    <a href="/admin">返回上一層</a>
 </body>
 </html>
