@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include("../../../../../partials/head.ejs") %>
+</head>
+<body>
+    <header><%- include("../../../../../partials/_nav.ejs") %></header>
+    <main>
+        <div class="jumbotron">
+            <div class="container">
+                <h1 class="mb-4">New Product</h1>
+
+                <form action="/product/cattoys" method="post">
+                    <%- include('../_form_fields') %>
+                    <a href="/product/cattoys" class="btn btn-secondary">Cancel</a>
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </form>
+            </div>
+        </div>
+    </main>
+    <footer><%- include("../../../../../partials/footer.ejs") %></footer>
+</body>
+</html>

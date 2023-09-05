@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include("../../../../partials/head.ejs") %>
+</head>
+<body>
+    <header><%- include("../../../../partials/_nav.ejs") %></header>
+    <main>
+        <div class="jumbotron">
+            <h1>其他食物類產品</h1>
+            <!-- <form action="/product/new_ofood" method="get">
+                <button type="submit" class="btn btn-success">創建</button>
+            </form> -->
+            
+            <div class="grid-container mt-4 mb-4">
+                <% otherfood.forEach(otherfoods =>{%>
+                    <div class="grid-item mt-2">
+                        <div class="card" style="width:400px">
+                            <img class="card-img-top mt-4" src="/image/otherfood.jpg" alt="Card image">
+                            <div class="card-body">
+                                <h4 class="card-title"><%= otherfoods.name %></h4>
+                                <div class="card-subtitle text-muted mb-2">
+                                    <%= otherfoods.createdAt.toLocaleDateString() %>
+                                </div>
+                                <form action="/product/otherfood/<%= otherfoods.id %>" method="get">
+                                    <button type="submit" class="btn btn-primary">Read More</button>            
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                <% }) %>
+            </div>
+            <div class="mt-2">
+                <form action="/product/type" method="get" class="d-lg-inline">
+                    <button type="submit" class="btn btn-secondary">返回種類</button>
+                </form>
+                <form action="/product/other" method="get" class="d-lg-inline">
+                    <button type="submit" class="btn btn-secondary">返回其他目錄</button>
+                </form>
+            </div>
+        </div>
+    </main>
+    <footer><%- include("../../../../partials/footer.ejs") %></footer>
+</body>
+</html>

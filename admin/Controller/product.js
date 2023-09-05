@@ -1,6 +1,6 @@
-import Product from "../../Model/product/product.js";
-import Category from "../../Model/product/category.js";
-import Pets from "../../Model/product/pets_category.js";
+import Product from "../../Model/product/admin/product.js";
+import Category from "../../Model/product/admin/category.js";
+import Pets from "../../Model/product/admin/pets_category.js";
 
 //Get
 

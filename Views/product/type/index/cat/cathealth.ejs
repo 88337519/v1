@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include("../../../../partials/head.ejs") %>
+</head>
+<body>
+    <header><%- include("../../../../partials/_nav.ejs") %></header>
+    <main>
+        <div class="jumbotron">
+            <h1>貓健康類產品</h1>
+            <!-- <form action="/product/new_cheal" method="get">
+                <button type="submit" class="btn btn-success">創建</button>
+            </form> -->
+            
+            <div class="grid-container mt-4 mb-4">
+                <% cathealth.forEach(cathealths =>{%>
+                    <div class="grid-item mt-2">
+                        <div class="card" style="width:400px">
+                            <img class="card-img-top mt-4" src="/image/catheal.jpg" alt="Card image">
+                            <div class="card-body">
+                                <h4 class="card-title"><%= cathealths.name %></h4>
+                                <div class="card-subtitle text-muted mb-2">
+                                    <%= cathealths.createdAt.toLocaleDateString() %>
+                                </div>
+                                <form action="/product/cathealth/<%= cathealths.id %>" method="get">
+                                    <button type="submit" class="btn btn-primary">Read More</button>            
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                <% }) %>
+            </div>
+            <div class="mt-2">
+                <form action="/product/type" method="get" class="d-lg-inline">
+                    <button type="submit" class="btn btn-secondary">返回種類</button>
+                </form>
+                <form action="/product/cat" method="get" class="d-lg-inline">
+                    <button type="submit" class="btn btn-secondary">返回貓目錄</button>
+                </form>
+            </div>
+        </div>
+    </main>
+    <footer><%- include("../../../../partials/footer.ejs") %></footer>
+</body>
+</html>

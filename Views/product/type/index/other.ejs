@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include("../../../partials/head.ejs") %>
+</head>
+<body>
+    <header><%- include("../../../partials/_nav.ejs") %></header>
+    <main>
+        <div class="jumbotron">
+            <h1>其他動物產品</h1>
+            <div class="grid-container">
+                <div class="grid-item">
+                    <div class="card mb-2" style="width:400px">
+                        <img class="card-img-top" src="/image/otherfood.jpg" alt="Card image">
+                        <div class="card-body">
+                            <h4 class="card-title">食物類產品</h4>
+                            <!-- <p class="card-text">Some example text.</p> -->
+                            <form action="/product/otherfood" method="get">
+                                <button type="submit" class="btn btn-primary">Go!</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="grid-item">
+                    <div class="card mb-2" style="width:400px">
+                        <img class="card-img-top" src="/image/otherheal.jpg" alt="Card image">
+                        <div class="card-body">
+                            <h4 class="card-title">健康類產品</h4>
+                            <!-- <p class="card-text">Some example text.</p> -->
+                            <form action="/product/otherhealth" method="get">
+                                <button type="submit" class="btn btn-primary">Go!</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="grid-item">
+                    <div class="card mb-4" style="width:400px">
+                        <img class="card-img-top" src="/image/othertoys.jpg" alt="Card image">
+                        <div class="card-body">
+                            <h4 class="card-title">玩具類產品</h4>
+                            <!-- <p class="card-text">Some example text.</p> -->
+                            <form action="/product/othertoys" method="get">
+                                <button type="submit" class="btn btn-primary">Go!</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <form action="/product/type" method="get">
+                <button type="submit" class="btn btn-secondary">返回種類</button>
+            </form>
+        </div>
+    </main>
+    <footer><%- include("../../../partials/footer.ejs") %></footer>
+</body>
+</html>

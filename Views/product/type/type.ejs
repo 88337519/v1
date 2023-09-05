@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include("../../partials/head.ejs") %>
+</head>
+<body>
+    <header><%- include("../../partials/_nav.ejs") %></header>
+    <main>
+        <div class="jumbotron">
+            <h1>寵物種類</h1>
+            <div class="grid-container">
+                <div class="grid-item">
+                    <div class="card" style="width:400px">
+                        <img class="card-img-top" src="/image/cat.jpg" alt="Card image">
+                        <div class="card-body">
+                            <h4 class="card-title">貓產品</h4>
+                            <!-- <p class="card-text">Some example text.</p> -->
+                            <form action="/product/cat" method="get">
+                                <button type="submit" class="btn btn-primary">Go!</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="grid-item">
+                    <div class="card" style="width:400px">
+                        <img class="card-img-top"  src="/image/dog.jpg" alt="Card image">
+                        <div class="card-body">
+                            <h4 class="card-title">狗產品</h4>
+                            <form action="/product/dog" method="get">
+                                <button type="submit" class="btn btn-primary">Go!</button>            
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="grid-item">
+                    <div class="card" style="width:400px">
+                        <img class="card-img-top"src="/image/other.jpg" alt="Card image">
+                        <div class="card-body">
+                            <h4 class="card-title">其他動物產品</h4>
+                            <form action="/product/other" method="get">
+                                <button type="submit" class="btn btn-primary">Go!</button>            
+                            </form>
+                        </div>
+                   </div>
+                </div>
+            </div>       
+        </div>
+    </main> 
+    <footer><%- include("../../partials/footer.ejs") %></footer>
+</body>
+</html>

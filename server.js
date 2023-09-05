@@ -1,11 +1,12 @@
 import express from 'express';
 import methodeOverride from 'method-override';
 import mongoose from 'mongoose';
-// import flash from 'connect-flash';
+import flash from 'connect-flash';
 import bodyParser from 'body-parser';
 import passport from 'passport';
-import { Strategy as LocalStrategy } from 'passport-local';
+// import { Strategy as LocalStrategy } from 'passport-local';
 import session from 'express-session';
+
 const app = express();
 
 //連結mongoose
@@ -60,13 +61,14 @@ app.use(session({
 
 
 //Template engine
-app.set('views engine', 'ejs');
-
+app.set("view engine","ejs");
+app.set("views", "./views")
 //Middleware
 app.use(express.json());
 app.use(methodeOverride("_method"));
 app.use(express.urlencoded({extended:true}));
-
+app.use(express.static("public"));
+app.use(flash());
 
 //Routes
 import IndexRoutes from './Routes/index.js';
