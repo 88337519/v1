@@ -10,15 +10,15 @@
 <body>
 <div class="container">
     <h1 class="mb-4">管理寵物品種</h1>
-    <a href="/admin/A_product/new_pets" class="btn btn-success">創建寵物品種</a>
-
+    <a href="/admin/A_product/new_pets" class="btn btn-success">創建寵物種類</a>
+    
     <% pet.forEach(Pets => { %>
         <div class="card me-4">
             <div class="card-body">
-                <h4 class="card-title"><%= Pets.title %></h4>
-                <h4 class="card-title"><%= Pets.category %></h4>
+                <h4 class="card-title">名：<%= Pets.title %></h4>
+                <h4 class="card-title">種類：<%= Pets.category %></h4>
             </div>
-            <form action="admin/A_product/pets/<%= Pets._id %>?_method=DELETE" method="POST" class="d-lg-inline">
+            <form action="/admin/A_product/pets/<%= Pets._id %>?_method=DELETE" method="POST" class="d-lg-inline">
                 <button type="submit" class="btn btn-danger">刪除</button>
             </form>
             <div>
@@ -26,6 +26,6 @@
             </div>
         </div>
         <% }) %>
-        <a href="/admin/A_stroe">返回上一層</a>
+        <a href="/admin/A_stroe">返回上一層</a>     
 </body>
 </html>

@@ -21,6 +21,7 @@ const ProductSchema = new mongoose.Schema({
     //食用日期
     date:{
         type:Number,
+        require:true
     },
     //存貨
     stock:{

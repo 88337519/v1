@@ -15,7 +15,7 @@
     <% category.forEach(Categories => { %>
     <div class="card me-4">
         <div class="card-body">
-            <h4 class="card-title"><%= Categories.title %></h4>
+            <h4 class="card-title">種類：<%= Categories.title %></h4>
         </div>
         <form action="/admin/A_product/category/<%= Categories._id %>?_method=DELETE" method="POST" class="d-lg-inline">
             <button type="submit" class="btn btn-danger">刪除</button>

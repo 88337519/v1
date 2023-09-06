@@ -1,7 +1,9 @@
 import express from 'express';
 const Routes = express.Router();
 
-import {GetA_Store,GetCategory,GetPets,GetProduct,GetNewCategory,GetEditCategory,
+Routes.route('/new_product').get(GetNewProduct);
+import {GetA_Store,GetCategory,GetPets,GetProduct,
+        GetNewCategory,GetNewPets,GetNewProduct,GetEditCategory,GetEditPets,GetEditProduct,
         PostCategory,PostPets,PostProduct,
         EditCategory,EditPets,EditProduct,
         DeleteCategory,DeletePets,DeleteProduct} from '../Controller/product.js';
@@ -20,9 +22,14 @@ Routes.route('/product').get(GetProduct);
 
 //創建頁面
 Routes.route('/new_category').get(GetNewCategory);
+Routes.route('/new_pets').get(GetNewPets);
+Routes.route('/new_product').get(GetNewProduct);
+
 
 //修改頁面
 Routes.route('/category/:id').get(GetEditCategory);
+Routes.route('/pets/:id').get(GetEditPets);
+Routes.route('/product/:id').get(GetEditProduct);
 
 //Post function
 //創建產品種類

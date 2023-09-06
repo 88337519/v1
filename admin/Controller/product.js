@@ -3,10 +3,10 @@ import Category from "../../Model/product/admin/category.js";
 import Pets from "../../Model/product/admin/pets_category.js";
 
 //Get
-
+//頁面
 export const GetA_Store = (req,res) =>{
     res.render('admin/store/A_store.ejs');
-}
+};
 
 export const GetCategory = async (req,res) =>{
     const Get_Category = await Category.find().sort({createdAt:'-1'});
@@ -23,17 +23,41 @@ export const GetProduct = async (req,res) =>{
     res.render('admin/store/product/A_product.ejs', {product : Get_Product});
 };
 
-export const GetNewCategory = (req,res) =>{
-    res.render('admin/store/category/new_category.ejs', {category : new Category()});
+//創建
+export const GetNewCategory = async (req,res) =>{
+    const Get_NewCategory = await Category.find();
+    res.render('admin/store/category/new_category.ejs', {category : Get_NewCategory});
 };
 
+export const GetNewPets = async (req,res) =>{
+    const Get_NewPets = await Pets.find();
+    res.render('admin/store/pets/new_pets.ejs', {pet : Get_NewPets});
+};
+
+export const GetNewProduct = async (req,res) =>{
+    const Get_NewProduct = await Product.find();
+    res.render('admin/store/product/new_product.ejs', {product : Get_NewProduct});
+};
+
+//修改
 export const GetEditCategory = async(req,res) =>{
     const EditCategory = await Category.findById(req.params.id)
     res.render('admin/store/category/edit_category.ejs', {category : EditCategory});
-}
+};
+
+export const GetEditPets = async(req,res) =>{
+    const EditPets = await Pets.findById(req.params.id)
+    res.render('admin/store/pets/edit_pets.ejs', {pet : EditPets});
+};
+
+export const GetEditProduct = async (req,res) =>{
+    const EditProduct = await Product.findById(req.params.id)
+    res.render('admin/store/product/edit_product.ejs', {product : EditProduct});
+};
 
 //Post
 export const PostCategory = async (req,res) =>{
+    const Get_PostCategory = await Category.find();
     const{title} = req.body;
     let newCategory = new Category({
         title:title,
@@ -42,15 +66,16 @@ export const PostCategory = async (req,res) =>{
         newCategory = await newCategory.save()
         res.redirect('/admin/A_product/category');
     }catch(error){
-        res.render('admin/store/A_category.ejs');
+        res.render('admin/store/A_category.ejs',{category : Get_PostCategory});
     }
     console.log(newCategory);
 };
 
 export const PostPets = async (req,res) =>{
     //const {title,category} = req.body;
-    const title = req.body;
-    const category = await Pets.findById(req.params.category);
+    const Get_PostPets = await Pets.find();
+    const {title} = req.body;
+    const category = await Pets.find();   //shopping carts可以解決的null的問題
     let newPets = new Pets({
         title:title,
         category:category,
@@ -59,13 +84,15 @@ export const PostPets = async (req,res) =>{
         newPets = await newPets.save();
         res.redirect('/admin/A_product/pets');
     }catch(error){
-        res.render('admin/store/A_pets.ejs');
+        res.render('admin/store/pets/A_pets.ejs',{pet : Get_PostPets});
     }
     console.log(newPets);
 };
 
 export const PostProduct = async (req,res) =>{
-    const {category,title,price,date,stock,size} = req.body;
+    const Get_PostProduct = await Product.find();
+    const {title,price,date,stock,size} = req.body;
+    const category = await Product.find();  //同上
     let newProduct = new Product({
         category:category,
         title:title,
@@ -79,7 +106,7 @@ export const PostProduct = async (req,res) =>{
         res.redirect('/admin/A_product/product');
     }catch(error){
         console.log(error)
-        res.render('admin/store/A_product.ejs');
+        res.render('admin/store/product/A_product.ejs',{product : Get_PostProduct});
     }
     console.log(newProduct);
 };
