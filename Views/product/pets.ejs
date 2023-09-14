@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include("../partials/head.ejs") %>
+</head>
+<body>
+    <header><%- include("../partials/_nav.ejs") %></header>
+    <main>
+        <div class="jumbotron">
+            <h1>商品種類</h1>
+            <div class="grid-container">
+                <% pet.forEach(Pets => { %>
+                    <div class="card me-4">
+                        <div class="card-body">
+                            <h4 class="card-title">適用種類：<%= Pets.category %></h4>
+                            <h4 class="card-title">商品種類：<%= Pets.title %></h4>
+                        </div>
+                    </div>
+                    <% }) %>
+            </div>       
+        </div>
+    </main> 
+    <footer><%- include("../partials/footer.ejs") %></footer>
+</body>
+</html>

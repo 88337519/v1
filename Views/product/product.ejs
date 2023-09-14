@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include("../partials/head.ejs") %>
+</head>
+<body>
+    <header><%- include("../partials/_nav.ejs") %></header>
+    <main>
+        <div class="jumbotron">
+            <h1>商品詳情</h1>
+            <div class="grid-container">
+                <% product.forEach(Products => { %>
+                    <div class="card me-4">
+                        <div class="card-body">
+                            <h4 class="card-title">寵物品種：<%= Products.category %></h4>
+                            <h4 class="card-title">商品名：<%= Products.title %></h4>
+                            <h4 class="card-title">價錢：<%= Products.price %></h4>
+                            <h4 class="card-title">最佳食用期：<%= Products.date %></h4>
+                            <h4 class="card-title">庫存：<%= Products.stock %></h4>
+                            <h4 class="card-title">適用體型：<%= Products.size %></h4>
+                        </div>
+                    </div>
+                <% }) %>
+            </div>       
+        </div>
+    </main> 
+    <footer><%- include("../partials/footer.ejs") %></footer>
+</body>
+</html>
