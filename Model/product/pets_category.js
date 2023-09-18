@@ -10,6 +10,9 @@ const PetSchema = new mongoose.Schema({
         //type:mongoose.Schema.Types.ObjectId,
         type:String,  //ObjectId
         require:true,
+    },
+    slug:{
+        type:String
     }
 });
 

@@ -1,21 +1,27 @@
 import { Strategy as LocalStrategy } from 'passport-local';
-import User from '../Model/auth/user';
+import User from '../Model/auth/user.js';
 import bcrypt from 'bcryptjs';
+import passport from 'passport';
 
 
-export default (passport) => {
+
+export default function(passport){
     passport.use(new LocalStrategy(function(username, password, done){
-        User.findOne({username:username},function(err, user){
-        if(!user) {
-            return done(null, false,{message:'找不到該用戶'});
-        }else{
-            const isValid = bcrypt.compareSync(password, user.password)
-            if(!isValid){
-                return done(null, false,{message:'密碼錯誤'})
-            }else{
-                return done(null, user)
+        User.findOne({username:username},function(err,user){
+            if(err)
+            console.log(err);
+            if(!user){
+                return done(null, false, {message:'沒有該用戶！'});
             }
-        }
+            bcrypt.compare(password, user.password,function(err,isMatch){
+            if(err)
+            console.log(err);
+            if(isMatch){
+                return done(null, user);
+            } else{
+                return done(null, false, {message:'密碼錯誤！'});  
+            }
+            })
         })
     }))
 }

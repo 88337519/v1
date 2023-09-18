@@ -10,28 +10,19 @@ const UserSchema = new mongoose.Schema({
     //郵箱
     email: {
         type: String,
-        required: true,
-        trim:true,
     },
     //用戶ID
     username:{
         type:String,
         required: true,
-        unique:true,  //字段是否唯一
     },
     //密碼
     password:{
         type:String,
-        required: true,
     },
-    //isadmin權限等級 0普通 1商家 2管理員
-    isAdmin:{
-        type:Boolean,
-        default:false,
-    },
-    creatAt:{
-        type:Date,
-        default:Date.now(),
+    //admin權限等級 0普通 1商家 2管理員
+    admin:{
+        type:Number,
     }
 });
 

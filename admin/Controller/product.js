@@ -1,6 +1,7 @@
 import Product from "../../Model/product/product.js";
 import Category from "../../Model/product/category.js";
 import Pets from "../../Model/product/pets_category.js";
+import Size from '../../Model/product/size.js'
 
 //Get
 
@@ -11,29 +12,32 @@ export const GetA_Store = (req,res) =>{
 
 export const GetCategory = async (req,res) =>{
     const Get_Category = await Category.find().sort({createdAt:'-1'});
-        res.render('admin/store/category/A_category.ejs', {category : Get_Category});
+        res.render('admin/store/category/A_category.ejs', {
+            category : Get_Category
+        });
 };
 
 export const GetPets = async (req,res) =>{
     const Get_Pets = await Pets.find().sort({createdAt:'-1'});
-    res.render('admin/store/pets/A_pets.ejs', {pet : Get_Pets});
+    res.render('admin/store/pets/A_pets.ejs', {
+        pet : Get_Pets
+    });
 };
 
 export const GetProduct = async (req,res) =>{
     const Get_Product = await Product.find().sort({createdAt:'-1'});
-    res.render('admin/store/product/A_product.ejs', {product : Get_Product});
+    res.render('admin/store/product/A_product.ejs', {
+        product : Get_Product
+    });
 };
 
 //創建
 export const GetNewCategory = async (req,res) =>{
     const Get_NewCategory = await Category.find();
-    res.render('admin/store/category/new_category.ejs', {category : Get_NewCategory});
+    res.render('admin/store/category/new_category.ejs', {
+        category : Get_NewCategory
+    });
 };
-
-// export const GetNewPets = async (req,res) =>{
-//     const Get_NewPets = await Pets.find();
-//     res.render('admin/store/pets/new_pets.ejs', {pet : Get_NewPets});
-// };
 
 export const GetNewPets = async (req,res) =>{
     const Get_NewPets = await Pets.find();
@@ -56,7 +60,9 @@ export const GetNewProduct = async (req,res) =>{
 //修改
 export const GetEditCategory = async(req,res) =>{
     const EditCategory = await Category.findById(req.params.id)
-    res.render('admin/store/category/edit_category.ejs', {category : EditCategory});
+    res.render('admin/store/category/edit_category.ejs', {
+        category : EditCategory
+    });
 };
 
 export const GetEditPets = async(req,res) =>{

@@ -30,6 +30,9 @@ const ProductSchema = new mongoose.Schema({
     //大小種類 B,M,S
     size:{
         type:String,
+    },
+    slug:{
+        type:String
     }
 });
 

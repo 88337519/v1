@@ -10,8 +10,17 @@
 <body>
 <div class="container">
     <h1 class="mb-4">註冊</h1>
+    <%- messages('messages', locals) %>
 
-    <form action="/auth/register" method="post">
+    <% if(errors){ %>
+        <% errors.forEach(function(error){ %>
+          <div class="alert alert-danger">
+            <%= error.msg%>
+          </div>
+        <% }) %>
+      <% } %>
+
+    <form action="/user/register" method="post">
         <%- include('_form_register.ejs') %>
     </form>
 </body>    

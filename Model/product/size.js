@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 
 //種類
-const CategorySchema = new mongoose.Schema({
+const SizeSchema = new mongoose.Schema({
     title:{
         type:String,
         require:true,
@@ -12,6 +12,6 @@ const CategorySchema = new mongoose.Schema({
 });
 
 
-const Category = mongoose.model('Category', CategorySchema);
+const Size = mongoose.model('Size', SizeSchema);
 
-export default Category;    
+export default Size;    
