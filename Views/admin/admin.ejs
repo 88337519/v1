@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>管理員</title>
+    <%- include("../partials/head.ejs") %>
 </head>
 <body>
-    <h1>管理員</h1>
+    <header><%- include("../partials/_nav.ejs") %></header>
+    <h2>管理員</h2>
     <a href="/admin/A_blog">管理博客</a>
     <a href="/admin/A_store">管理商品</a>
     <a href="/user/logout">登出</a>
+    <footer><%- include("../partials/footer.ejs") %></footer>
 </body>
 </html>

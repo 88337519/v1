@@ -17,7 +17,7 @@ export const GetSuccess = (req,res) =>{
 //Post
 export const PostLogin = async (req,res,next) =>{
     passport.authenticate('local',{         //passport對象通過調用方法authenticate來對用戶身分進行認證
-        successRedirect:'/admin',
+        successRedirect:'/',
         failureRedirect:'/user/login',
         failureFlash:true
     })(req,res,next);
@@ -57,7 +57,7 @@ export const PostRegitser = async(req,res) =>{
                             email:email,
                             username:username,
                             password:hash,
-                            admin:1
+                            admin:0
                         });
 
                         user.save((err)=>{

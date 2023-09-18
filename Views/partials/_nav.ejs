@@ -64,11 +64,19 @@
           <a href="/account/user">User</a>
         </div>
     </li>
-    <li class="nav-item">
-      <a class="nav-link" href="/user/login">Login</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="/user/register">Register</a>
-    </li>
+    <% if (user) { %>
+      <li><a class="nav-link" href="/user/logout">Hi,<%= user.name %> (Logout)</a></li>
+    <%}else {%>
+      <li class="nav-item">
+        <a class="nav-link" href="/user/login">Login</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/user/register">Register</a>
+      </li>
+    <%} %>
+    <% if (user && user.admin == 1) { %>
+      <li><a class="nav-link" href="/admin">Admin Area</a></li>
+    <%} %>
+
   </ul>
 </nav>
