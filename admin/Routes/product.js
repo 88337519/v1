@@ -9,6 +9,7 @@ import {GetA_Store,GetCategory,GetPets,GetProduct,
 
 
 //Get
+Routes.get('/:categories/:pets/:produsts/:id')
 
 //管理商店頁面
 Routes.route('/A_store').get(GetA_Store);

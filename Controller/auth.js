@@ -26,53 +26,65 @@ export const PostLogin = async (req,res,next) =>{
 export const PostRegitser = async(req,res) =>{
     const { name, email , username , password , password2 } = req.body;
 
-    req.checkBody('name', 'Name is required!').notEmpty();
-    req.checkBody('email', 'Email is required!').isEmail();
-    req.checkBody('username', 'Username is required!').notEmpty();
-    req.checkBody('password', 'Password is required!').notEmpty();
-    req.checkBody('password2', 'Passwords do not match!').equals(password);
 
-    let errors  =  req.validationErrors();
+    const newUser = new User({
+        name: name,
+        email: email,
+        username: username,
+        password: password
+    })
 
-    if(errors){
-        res.render('auth/register.ejs',{
-            errors,errors,
-            user:null,
-        })
-        console.log(req.body);
-    }else{       //err往下
-        User.findOne({username:username}, (err,user)=>{
-            if(err);
-                console.log(err);
-            if(user){
-                req.flash('用戶名已重複');
-                res.redirect('/user/register');
-            }else{
-                bcrypt.genSalt(10,function(err,salt){
-                    bcrypt.hash(password, salt, (err,hash)=>{
-                        if(err) return console.log(err);
+    const saveuser = newUser.save()
 
-                        const user = new User({
-                            name:name,
-                            email:email,
-                            username:username,
-                            password:hash,
-                            admin:0
-                        });
+    res.redirect('/user/login')
 
-                        user.save((err)=>{
-                            if(err){
-                                console.log(err);
-                            }else{
-                                req.flash('註冊成功！');
-                                res.redirect('/user/login')
-                            }
-                        })
-                    })
-                })
-            }
-        })
-    }
+    // req.checkBody('name', 'Name is required!').notEmpty();
+    // req.checkBody('email', 'Email is required!').isEmail();
+    // req.checkBody('username', 'Username is required!').notEmpty();
+    // req.checkBody('password', 'Password is required!').notEmpty();
+    // req.checkBody('password2', 'Passwords do not match!').equals(password);
+
+    // let errors  =  req.validationErrors();
+
+    // if(errors){
+    //     res.render('auth/register.ejs',{
+    //         errors,errors,
+    //         user:null,
+    //     })
+    //     console.log(req.body);
+    // }else{       //err往下
+    //     User.findOne({username:username}, (err,user)=>{
+    //         if(err);
+    //             console.log(err);
+    //         if(user){
+    //             req.flash('用戶名已重複');
+    //             res.redirect('/user/register');
+    //         }else{
+    //             bcrypt.genSalt(10,function(err,salt){
+    //                 bcrypt.hash(password, salt, (err,hash)=>{
+    //                     if(err) return console.log(err);
+
+    //                     const user = new User({
+    //                         name:name,
+    //                         email:email,
+    //                         username:username,
+    //                         password:hash,
+    //                         admin:0
+    //                     });
+
+    //                     user.save((err)=>{
+    //                         if(err){
+    //                             console.log(err);
+    //                         }else{
+    //                             req.flash('註冊成功！');
+    //                             res.redirect('/user/login')
+    //                         }
+    //                     })
+    //                 })
+    //             })
+    //         }
+    //     })
+    // }
 }
 
 export const GetLogout = (req,res)=>{
